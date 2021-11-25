@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame implements ActionListener, Runnable {
-    private int row = 14;
+    private int row = 10;
     private int collum = 14;
     private int width = 1600;
     private int height = 800;
@@ -19,6 +19,10 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
     public JLabel lbScore;
     private JProgressBar progressTime;
     private JButton btnNewGame;
+
+    //2 bien de quan ly trang thai cua game, se duoc su dung trong class khac
+    public boolean pause = false;
+    public boolean resume = false;
 
     public boolean isPause() {
         return pause;
@@ -36,9 +40,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
         this.resume = resume;
     }
 
-    //2 bien de quan ly trang thai cua game, se duoc su dung trong class khac
-    public boolean pause = false;
-    public boolean resume = false;
+
 
     public MainFrame(){
         add(mainPanel = createMainPanel());
@@ -66,7 +68,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
         return panel;
     }
 
-    private  JPanel createControlPanel(){
+    private JPanel createControlPanel(){
         lbScore = new JLabel("0");
         progressTime = new JProgressBar(0,100);
         progressTime.setValue(100);
@@ -91,6 +93,34 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(new TitledBorder("Control"));
         panel.add(panelControl, BorderLayout.PAGE_START);
+        panel.add(createPanelLevel());
+
+        return panel;
+    }
+
+    private JPanel createPanelLevel(){
+        //tạo các button để điều chỉnh độ khó (độ to) của màn chơi
+        JRadioButton easyButton = new JRadioButton("8 x 10");
+        easyButton.setSelected(true);
+        Point temp = easyButton.getLocation();
+        easyButton.setBounds(temp.x, temp.y, 100,100);
+
+        JRadioButton mediumButton = new JRadioButton("10 x 14");
+        mediumButton.setBounds(temp.x, (temp.y + 50), 100, 100);
+
+        JRadioButton hardButton = new JRadioButton("14 x 18");
+        hardButton.setBounds(temp.x, (temp.y + 100), 100, 100);
+
+        ButtonGroup btnGroup = new ButtonGroup();
+        btnGroup.add(easyButton);
+        btnGroup.add(mediumButton);
+        btnGroup.add(hardButton);
+
+        JPanel panel = new JPanel();
+        panel.setBorder(new TitledBorder("level: "));
+        panel.add(easyButton);
+        panel.add(mediumButton);
+        panel.add(hardButton);
 
         return panel;
     }

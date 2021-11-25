@@ -17,8 +17,8 @@ public class MatrixGame {
     }
 
     public void showMatrix(){
-        for (int i = 1; i < row - 1; i++){
-            for (int j = 1; j < collum - 1; j++){
+        for (int i = 1; i < row -1; i++){
+            for (int j = 1; j < collum -1; j++){
                 System.out.printf("%3d",matrix[i][j]);
             }
             System.out.println();
@@ -136,13 +136,13 @@ public class MatrixGame {
 
     private boolean checkRectY(Point p1, Point p2) {
         System.out.println("check rect y");
-        // find point have y min
+        // tìm điểm có x min
         Point pMinX = p1, pMaxX = p2;
         if (p1.x > p2.x) {
             pMinX = p2;
             pMaxX = p1;
         }
-        // find line and y begin
+        //
         for (int x = pMinX.x; x <= pMaxX.x; x++) {
             if (x > pMinX.x && matrix[x][pMinX.y] != 0) {
                 return false;
@@ -181,10 +181,8 @@ public class MatrixGame {
         }
 
         // tìm cột kết thúc của đường đi nằm ngoài hcn do 2 điểm tạo thành
-        if ((matrix[row][colFinish] == 0 || pMinY.y == pMaxY.y)
-                && checkLineX(pMinY.y, pMaxY.y, row)) {
-            while (matrix[pMinY.x][y] == 0
-                    && matrix[pMaxY.x][y] == 0) {
+        if ((matrix[row][colFinish] == 0 || pMinY.y == pMaxY.y) && checkLineX(pMinY.y, pMaxY.y, row)) {
+            while (matrix[pMinY.x][y] == 0 && matrix[pMaxY.x][y] == 0) {
                 if (checkLineY(pMinY.x, pMaxY.x, y)) {
 
                     System.out.println("TH X " + type);
@@ -214,10 +212,8 @@ public class MatrixGame {
             x = pMinX.x + type;
             col = pMaxX.y;
         }
-        if ((matrix[rowFinish][col] == 0|| pMinX.x == pMaxX.x)
-                && checkLineY(pMinX.x, pMaxX.x, col)) {
-            while (matrix[x][pMinX.y] == 0
-                    && matrix[x][pMaxX.y] == 0) {
+        if ((matrix[rowFinish][col] == 0|| pMinX.x == pMaxX.x) && checkLineY(pMinX.x, pMaxX.x, col)) {
+            while (matrix[x][pMinX.y] == 0 && matrix[x][pMaxX.y] == 0) {
                 if (checkLineX(pMinX.y, pMaxX.y, x)) {
                     System.out.println("TH Y " + type);
                     System.out.println("(" + pMinX.x + "," + pMinX.y + ") -> ("

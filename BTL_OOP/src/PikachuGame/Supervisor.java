@@ -17,7 +17,6 @@ public class Supervisor {
 
         for (int i = 1; i < row - 1; i++){
             for (int j = 1; j < collum - 1; j++){
-
             }
         }
     }

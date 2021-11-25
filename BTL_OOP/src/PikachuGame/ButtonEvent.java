@@ -88,10 +88,13 @@ public class ButtonEvent extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String btnIndex = e.getActionCommand();
+        //lấy tọa độ của điểm vừa được bấm
         int indexDot = btnIndex.lastIndexOf(",");
         int x = Integer.parseInt(btnIndex.substring(0,indexDot));
         int y = Integer.parseInt(btnIndex.substring(indexDot+1,btnIndex.length()));
 
+        //nếu trước đấy chưa có nút nào được bấm thì sẽ gán p1, còn không thì gán p2
+        //sau khi mà gán có 2 điểm p1 p2 thì sẽ xét xem là 2 điểm này có hợp lệ để ăn không
         if (p1 == null){
             p1 = new Point(x,y);
             //buttons[p1.x][p1.y].setBorder(new LineBorder(checkedBtnBackGroundColor));
@@ -111,7 +114,7 @@ public class ButtonEvent extends JPanel implements ActionListener {
                 checkedPair = null;
                 score += 10;
                 pairs--;
-                //frame.time++; //phan thuong cong thoi gian la tuy thuoc
+                //frame.time++; //phan thuong cong thoi gian la tuy chon
                 frame.lbScore.setText(score + "");;
             }
             else{
