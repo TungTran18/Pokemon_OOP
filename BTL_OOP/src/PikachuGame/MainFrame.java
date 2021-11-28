@@ -8,8 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame implements ActionListener, Runnable {
-    private int row = 10;
-    private int collum = 14;
+    //panel chính để hiển thị ra màn hình
+
+    private JRadioButton easyButton;
+    private JRadioButton mediumButton;
+    private JRadioButton hardButton;
+
+    private int row = 8;
+    private int collum = 10;
+
     private int width = 1600;
     private int height = 800;
     private ButtonEvent graphicsPanel;
@@ -100,16 +107,12 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
 
     private JPanel createPanelLevel(){
         //tạo các button để điều chỉnh độ khó (độ to) của màn chơi
-        JRadioButton easyButton = new JRadioButton("8 x 10");
+        easyButton = new JRadioButton("8 x 10");
         easyButton.setSelected(true);
-        Point temp = easyButton.getLocation();
-        easyButton.setBounds(temp.x, temp.y, 100,100);
 
-        JRadioButton mediumButton = new JRadioButton("10 x 14");
-        mediumButton.setBounds(temp.x, (temp.y + 50), 100, 100);
+        mediumButton = new JRadioButton("10 x 14");
 
-        JRadioButton hardButton = new JRadioButton("14 x 18");
-        hardButton.setBounds(temp.x, (temp.y + 100), 100, 100);
+        hardButton = new JRadioButton("14 x 18");
 
         ButtonGroup btnGroup = new ButtonGroup();
         btnGroup.add(easyButton);
@@ -134,6 +137,19 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
     public void newGame(){
         time = MAX_Time;
         graphicsPanel.removeAll();
+        //kiêm tra xem nút độ khó nào đc chọn để set kích cỡ của màn chơi
+        if (easyButton.isSelected()){
+            this.row = 8;
+            this.collum = 10;
+        }
+        if (mediumButton.isSelected()){
+            this.row = 10;
+            this.collum = 14;
+        }
+        if (hardButton.isSelected()){
+            this.row = 14;
+            this.collum = 18;
+        }
         mainPanel.add(createGraphicsPanel(),BorderLayout.CENTER);
         mainPanel.validate();
         mainPanel.setVisible(true);

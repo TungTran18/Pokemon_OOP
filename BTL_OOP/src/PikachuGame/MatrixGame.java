@@ -80,7 +80,7 @@ public class MatrixGame {
                 System.out.println("die" + x + " " + y);
                 return false;
             }
-            System.out.println("ok: " + x + "" + y);
+            System.out.println("ok: " + x + " " + y);
         }
 
         //neu khong co vat can thi return true;
@@ -100,7 +100,7 @@ public class MatrixGame {
                 System.out.println("die" + x + " " + y);
                 return false;
             }
-            System.out.println("ok: " + x + "" + y);
+            System.out.println("ok: " + x + " " + y);
         }
 
         //neu khong co vat can thi return true;
@@ -109,7 +109,7 @@ public class MatrixGame {
 
     private boolean checkRectX(Point p1, Point p2) {
         System.out.println("check rect x");
-        // tim diem co y lon hon
+        // tim diem co y min
         Point pMinY = p1, pMaxY = p2;
         if (p1.y > p2.y) {
             pMinY = p2;
@@ -121,7 +121,6 @@ public class MatrixGame {
             }
             // ktra 2 duong
             if ((matrix[pMaxY.x][y] == 0) && checkLineY(pMinY.x, pMaxY.x, y) && checkLineX(y, pMaxY.y, pMaxY.x)) {
-
                 System.out.println("Rect x");
                 System.out.println("(" + pMinY.x + "," + pMinY.y + ") -> ("
                         + pMinY.x + "," + y + ") -> (" + pMaxY.x + "," + y
@@ -147,10 +146,8 @@ public class MatrixGame {
             if (x > pMinX.x && matrix[x][pMinX.y] != 0) {
                 return false;
             }
-            if ((matrix[x][pMaxX.y] == 0)
-                    && checkLineX(pMinX.y, pMaxX.y, x)
-                    && checkLineY(x, pMaxX.x, pMaxX.y)) {
-
+            if (((matrix[x][pMaxX.y] == 0) || x == pMaxX.x) && checkLineX(pMinX.y, pMaxX.y, x) && checkLineY(x, pMaxX.x, pMaxX.y)) {
+                //điều kiện || nhằm đề phòng trường hợp ăn theo đg "_|"
                 System.out.println("Rect y");
                 System.out.println("(" + pMinX.x + "," + pMinX.y + ") -> (" + x
                         + "," + pMinX.y + ") -> (" + x + "," + pMaxX.y
@@ -162,7 +159,7 @@ public class MatrixGame {
     }
 
     private boolean checkMoreLineX(Point p1, Point p2, int type) {
-        System.out.println("check chec more x");
+        System.out.println("check more x");
         // tìm điểm có y bé hơn
         Point pMinY = p1, pMaxY = p2;
         if (p1.y > p2.y) {

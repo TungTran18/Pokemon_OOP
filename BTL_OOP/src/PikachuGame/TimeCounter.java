@@ -1,6 +1,7 @@
 package PikachuGame;
 
 public class TimeCounter extends Thread{
+    //class nhằm tạo một thread riêng cho việc đếm thời gian của game
     MainFrame frame;
 
     public TimeCounter(MainFrame frame) {
