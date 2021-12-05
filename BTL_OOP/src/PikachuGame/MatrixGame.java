@@ -226,14 +226,14 @@ public class MatrixGame {
 
     public CheckedPair checkTwoPoint(Point p1, Point p2){
         if (!p1.equals(p2) && matrix[p1.x][p1.y] == matrix[p2.x][p2.y]) {
-            // check line with x
+            //ktra 2 điểm cùng hàng x
             if (p1.x == p2.x) {
                 System.out.println("line x");
                 if (checkLineX(p1.y, p2.y, p1.x)) {
                     return new CheckedPair(p1, p2);
                 }
             }
-            // check line with y
+            // kiểm tra 2 điểm cùng cột y
             if (p1.y == p2.y) {
                 System.out.println("line y");
                 if (checkLineY(p1.x, p2.x, p1.y)) {
@@ -241,32 +241,32 @@ public class MatrixGame {
                     return new CheckedPair(p1, p2);
                 }
             }
-            // check in rectangle with x
+            // kiểm tra đường hợp lệ nằm trong hcn do 2 điểm tạo ra
             if ( checkRectX(p1, p2)) {
                 System.out.println("rect x");
                 return new CheckedPair(p1, p2);
             }
-            // check in rectangle with y
+            // kiểm tra đường hợp lệ nằm trong hcn do 2 điểm tạo ra
             if (checkRectY(p1, p2)) {
                 System.out.println("rect y");
                 return new CheckedPair(p1, p2);
             }
-            // check more right
+            // ktra đường đi ra khỏi hcn do 2 điểm tạo thành về bên phải
             if (checkMoreLineX(p1, p2, 1)) {
                 System.out.println("more right");
                 return new CheckedPair(p1, p2);
             }
-            // check more left
+            // ktra đường đi ra khỏi hcn do 2 điểm tạo thành về bên trái
             if (checkMoreLineX(p1, p2, -1)) {
                 System.out.println("more left");
                 return new CheckedPair(p1, p2);
             }
-            // check more down
+            // ktra đường đi ra khỏi hcn do 2 điểm tạo thành đi xuống dưới
             if (checkMoreLineY(p1, p2, 1)) {
                 System.out.println("more down");
                 return new CheckedPair(p1, p2);
             }
-            // check more up
+            // cktra đường đi ra khỏi hcn do 2 điểm tạo thành đi lên trên
             if (checkMoreLineY(p1, p2, -1)) {
                 System.out.println("more up");
                 return new CheckedPair(p1, p2);

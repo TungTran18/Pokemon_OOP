@@ -44,6 +44,7 @@ public class ButtonEvent extends JPanel implements ActionListener {
     }
 
     public void addArrayButton(){
+        // tạo các button trong game
         buttons = new JButton[row][collum];
 
         for (int i = 1; i < row - 1; i++){
@@ -56,7 +57,7 @@ public class ButtonEvent extends JPanel implements ActionListener {
         }
     }
 
-    private Icon getIcon(int index) {
+    private Icon getIcon(int index) { //lấy ảnh của icon tương ứng từ folder icon
         int width = 50, height = 50;
         Image img = new ImageIcon(getClass().getResource("/icon/" + index + ".png")).getImage();
         Icon icon = new ImageIcon(img.getScaledInstance(width,height,img.SCALE_SMOOTH));
@@ -109,7 +110,7 @@ public class ButtonEvent extends JPanel implements ActionListener {
                 System.out.println("pair != null");
                 matrixGame.getMatrix()[p1.x][p1.y] = 0;
                 matrixGame.getMatrix()[p2.x][p2.y] = 0;
-                matrixGame.showMatrix();
+                matrixGame.showMatrix(); // chỉ để hiển thị ra console nhằm mục địch ktra
                 execute(p1,p2);
                 checkedPair = null;
                 score += 10;
