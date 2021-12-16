@@ -51,7 +51,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
 
     public MainFrame(){
         add(mainPanel = createMainPanel());
-        setTitle("Pepe-kachu game");
+        setTitle("Pikachu");
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(width,height);

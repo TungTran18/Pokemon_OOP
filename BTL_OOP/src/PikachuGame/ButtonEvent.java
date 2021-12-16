@@ -22,6 +22,7 @@ public class ButtonEvent extends JPanel implements ActionListener {
     private int score = 0;
     private int pairs;
     private Color checkedBtnBackGroundColor = new Color(227, 0, 125);
+    private Color btnBackGroundColor = new Color(238, 237, 239);
 
     public ButtonEvent (MainFrame frame, int row, int collum){
         this.frame = frame;
@@ -67,6 +68,7 @@ public class ButtonEvent extends JPanel implements ActionListener {
 
     private JButton createButton(String action) {
         JButton button = new JButton();
+        button.setBackground(btnBackGroundColor);
         button.setActionCommand(action);
         button.setBorder(null);
         button.addActionListener(this);
@@ -119,8 +121,8 @@ public class ButtonEvent extends JPanel implements ActionListener {
                 frame.lbScore.setText(score + "");;
             }
             else{
-                buttons[p1.x][p1.y].setBackground(Color.white);
-                buttons[p2.x][p2.y].setBackground(Color.white);
+                buttons[p1.x][p1.y].setBackground(btnBackGroundColor);
+                buttons[p2.x][p2.y].setBackground(btnBackGroundColor);
             }
             buttons[p1.x][p1.y].setBorder(null);
             p1 = null;
